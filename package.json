@@ -1,0 +1,11 @@
+{
+  "name": "yarn-upgrade-repo",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:josa42/yarn-upgrade-repo.git",
+  "author": "Josa Gesell <josa@gesell.me>",
+  "license": "MIT",
+  "bin": {
+    "yarn-upgrade-repo": "bin/yarn-upgrade-repo.js"
+  }
+}
