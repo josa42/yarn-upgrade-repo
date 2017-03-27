@@ -17,7 +17,7 @@
   )
 
   const writeJSON = (path, content) => new Promise((resolve, reject) =>
-    fs.writeFile(path, JSON.stringify(content, null, '  '), (error) => error ? reject(error) : resolve())
+    fs.writeFile(path, `${JSON.stringify(content, null, '  ')}\n`, (error) => error ? reject(error) : resolve())
   )
 
   const cd = (p) => process.chdir(p)
