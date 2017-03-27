@@ -27,12 +27,14 @@
 
   const defaultFlags = {
     head: false,
+    branch: 'master',
   }
 
   try {
     const [dependency] = process.argv.slice(2).filter((arg) => !/^--/.test(arg));
     const flags = process.argv.slice(2).filter((arg) => /^--/.test(arg)).reduce((flags, flag) => {
-      flags[flag.replace(/^--/, '')] = true;
+      const [, key,, value = true] = flag.match(/--([^=]+)(=(.*))?$/)
+      flags[key] = value;
       return flags
     }, defaultFlags);
 
@@ -58,6 +60,8 @@
     await sh(`git clone ${url} ${dependency}`)
 
     cd(`${tmpPath}/${dependency}`)
+
+    await sh(`git checkout ${flags.branch}`)
 
     let newHash = ''
 
